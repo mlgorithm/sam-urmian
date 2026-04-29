@@ -1,0 +1,20 @@
+# Auto-added generated content ignores
+env/
+.venv/
+venv/
+data/
+results/
+outputs/
+runs/
+artifacts/
+build/
+.build/
+node_modules/
+.next/
+dist/
+.cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+.swiftpm/
+.xcode-derived/
