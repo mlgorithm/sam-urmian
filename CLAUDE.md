@@ -21,8 +21,9 @@ index.html        Single-page site. All content lives here.
 styles.css        All styling. CSS custom properties at :root drive the palette.
 site.js           Tiny IIFE that progressively reveals the email address.
 assets/
-  sam-urmian.jpg          Portrait used in the hero card.
-  ml-by-design-cover.png  Book cover in the Book section.
+  sam-urmian.jpg          Small round avatar in the intro header.
+  ml-by-design-cover.png  Book cover (currently unused).
+  sam-urmian-thesis.pdf   PhD thesis, linked from the intro.
 README.md         Short publishing note (push to main, set Pages to root).
 .nojekyll         Disables Jekyll on GitHub Pages so files aren't preprocessed.
 .gitignore        Generic ignores (node_modules, build outputs, etc.) — not
@@ -30,7 +31,7 @@ README.md         Short publishing note (push to main, set Pages to root).
 ```
 
 The page is structured as sections referenced from the top nav: `#about`
-(hero), `#noki`, `#book`, `#projects`, `#software`. The nav and the
+(intro), `#software`, `#projects`, `#book`, `#noki`. The nav and the
 section ids must stay in sync.
 
 ## Conventions
@@ -42,26 +43,23 @@ section ids must stay in sync.
 - 2-space indentation, double-quoted attributes.
 - External links: `target="_blank" rel="noreferrer"` (or `noopener
   nofollow` on the email link). Keep this consistent.
-- New content sections follow the existing pattern:
-  `<section class="section-block" id="...">` with a
-  `<div class="section-heading"><h2>…</h2></div>` and `.lede` / `.hero-note`
-  paragraphs. Cards inside use `.entry-card` or `.topic-card`.
-- The hero is a two-column grid (`.hero-copy` + `.hero-photo-card`); the
-  Book section uses `.book-layout` (cover left, copy right). Both
-  collapse to one column at ≤960px / ≤720px.
+- The design is a deliberately plain, single-column, monospace page
+  aimed at developers. Keep it that way: no cards, grids, or hero blocks.
+- New content sections are `<section id="...">` with an `<h2>` (CSS adds
+  a `## ` prefix) followed by `<p>` text or a `<dl class="list">` of
+  `<dt>` link + `<dd>` one-line description. Optional `<span class="tag">`
+  after a link for short labels (language, "past", etc.).
 - Update the nav (`.site-nav`) whenever a new top-level section is
   added or renamed — the anchors are hand-maintained.
 
 ### CSS
 - Single `styles.css`. Custom properties live at `:root`
-  (`--bg`, `--surface`, `--ink`, `--muted`, `--line`, `--accent`,
-  `--content-width`, `--radius-*`). Prefer reusing them over introducing
-  new colors or radii.
-- Two breakpoints: `max-width: 960px` (grid → single column) and
-  `max-width: 720px` (tighter padding, header stacks). Don't add a third
-  breakpoint without a reason.
-- Fonts: Manrope for body, Instrument Serif for headings, loaded from
-  Google Fonts in `index.html`. Don't add a third family.
+  (`--bg`, `--ink`, `--muted`, `--line`, `--accent`, `--tag-bg`,
+  `--content-width`, `--mono`) and are redefined for dark mode under
+  `@media (prefers-color-scheme: dark)`. Reuse them rather than adding
+  new colors.
+- One breakpoint: `max-width: 720px`. Don't add more without a reason.
+- Fonts: the system monospace stack in `--mono`. No web fonts.
 - A `@media (prefers-reduced-motion: reduce)` block disables smooth
   scroll. Respect motion preferences in any new animation.
 
@@ -108,8 +106,8 @@ GitHub Pages serves the same files unmodified (Jekyll is disabled by
 - **Scope discipline.** Don't refactor the markup or CSS as a side
   effect of a content edit. If the user asks for a copy change, change
   the copy.
-- **No analytics, no trackers, no third-party scripts.** Only the
-  Google Fonts stylesheet is loaded from off-domain.
+- **No analytics, no trackers, no third-party scripts, no web fonts.**
+  Nothing is loaded from off-domain.
 
 ## Things to avoid
 
