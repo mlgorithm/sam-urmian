@@ -67,14 +67,15 @@ section ids must stay in sync.
 - `site.js` is a single IIFE that runs after the DOM is parsed (script
   tag is at end of `<body>`). Vanilla JS only — do **not** add a
   framework, bundler, or npm dependency.
-- The email address is deliberately not present in source: it's stored
-  as two reversed character-code arrays in `site.js` and assembled on
-  the first real user interaction (`click`, `mouseenter`, `focus`,
-  `touchstart`). The visible `.email-decoy` text
+- The email addresses are deliberately not present in source: each is
+  stored as reversed character-code arrays in `site.js` (a shared local
+  part plus one domain per link) and assembled on the first real user
+  interaction (`click`, `mouseenter`, `focus`, `touchstart`). Links are
+  wired by id via the `addresses` list (`#email-link` for the UiB
+  address, `#gmail-link` for Gmail). The hidden `.email-decoy` text
   (`no-reply@example.invalid`) is the placeholder bots see. Preserve
-  this scheme — don't paste the address in plain text anywhere in
-  `index.html`, `site.js`, commit messages, or comments. The decoded
-  address is `sam.urmian@uib.no`.
+  this scheme — don't paste an address in plain text anywhere in
+  `index.html`, `site.js`, commit messages, or comments.
 
 ## Local preview
 

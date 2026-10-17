@@ -160,7 +160,7 @@ section {
   font-weight: 400;
 }
 
-#email-link .email-decoy {
+.email-decoy {
   display: none;
 }
 
